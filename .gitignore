@@ -19,6 +19,7 @@
 
 # .config/ dotfiles
 !.config/dunst/
+!.config/dunst/*
 
 !.config/fish/
 .config/fish/*
@@ -27,11 +28,13 @@
 !.config/fish/functions/
 
 !.config/i3/
+!.config/i3/*
 
 !.config/htop/
+!.config/htop/*
 
-!.mpd/
-.mpd/*
-!.mpd/mpd.conf
+!.config/mpd/
+.config/mpd/*
+!.config/mpd/mpd.conf
 
 
