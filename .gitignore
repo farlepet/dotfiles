@@ -1,0 +1,37 @@
+# Initially ignore everything
+*
+
+# Include this file, obviously
+!.gitignore
+
+# Include dotfiles in root
+!.bashrc
+!.bash_profile
+!.profile
+!.vimrc
+!.xinitrc
+!.xbindkeysrc.scm
+!.Xresources
+
+# Include .config folder
+!.config/
+.config/*
+
+# .config/ dotfiles
+!.config/dunst/
+
+!.config/fish/
+.config/fish/*
+!.config/fish/config.fish
+!.config/fish/fishd.Envy360
+!.config/fish/functions/
+
+!.config/i3/
+
+!.config/htop/
+
+!.mpd/
+.mpd/*
+!.mpd/mpd.conf
+
+

@@ -1,0 +1,8 @@
+(xbindkey '("XF86AudioRaiseVolume") "ponymix increase 5")
+(xbindkey '("XF86AudioLowerVolume") "ponymix decrease 5")
+(xbindkey '("XF86AudioMute") "ponymix toggle")
+(xbindkey '("XF86AudioPrev") "mpc prev")
+(xbindkey '("XF86AudioNext") "mpc next")
+(xbindkey '("XF86AudioPlay") "mpc toggle")
+(xbindkey '("XF86MonBrightnessUp") "xbacklight -inc 10")
+(xbindkey '("XF86MonBrightnessDown") "xbacklight -dec 10")
