@@ -16,6 +16,7 @@ Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-scripts/Conque-GDB'
+Plugin 'leafgarland/typescript-vim'
 
 let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
 let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
