@@ -113,7 +113,7 @@ mount-0 = /
 mount-1 = /mnt/Music
 mount-2 = /mnt/Movies
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -173,19 +173,15 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid% (%local_ip%) %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = ▃
+ramp-signal-1 = ▅
+ramp-signal-2 = ▆
+ramp-signal-3 = ▇
+ramp-signal-4 = █
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -194,7 +190,7 @@ interface = eno1
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "ETH "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
