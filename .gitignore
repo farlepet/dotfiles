@@ -37,4 +37,5 @@
 .config/mpd/*
 !.config/mpd/mpd.conf
 
-
+!.config/polybar
+!.config/polybar/*

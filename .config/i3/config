@@ -207,49 +207,5 @@ mode "$mode_gaps_outer" {
 }
 
 
-
-
-
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status --config ~/.config/i3/statusconfig_upper
-        #status_command ~/.config/i3/i3status-conky.sh
-
-		bindsym button1 nop
-		bindsym button4 nop
-		bindsym button5 nop
-
-		colors {
-			statusline #b8b8b8
-		}
-
-        tray_output eDP1
-		font pango:xos4 Terminus, Font Awesome 8
-        #font pango:DejaVu Sans Mono 8
-		position top
-		strip_workspace_numbers yes
-
-		binding_mode_indicator no
-
-
-}
-
-bar {
-	status_command i3status --config ~/.config/i3/statusconfig_lower
-
-	colors {
-		statusline #b8b8b8
-	}
-
-
-	workspace_buttons no
-
-	binding_mode_indicator yes
-
-	font pango:xos4 Terminus, Font Awesome 8
-    #font pango:DejaVu Sans Mono 8
-	position bottom
-}
+# Start Polybar:
+exec_always --no-startup-id $HOME/.config/polybar/start.sh
