@@ -75,6 +75,7 @@ set wildignore=*.o,*~
 
 " Enable syntax highlighting
 syntax on
+filetype on
 
 " Enable mouse
 set mouse=a

@@ -1,0 +1,12 @@
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #aa273238, #88273238, #881e2529
+rofi.color-normal: #aa273238, #88c1c1c1, #88273238, #88394249, #ffffff
+rofi.color-active: #aa273238, #8880cbc4, #88273238, #88394249, #80cbc4
+rofi.color-urgent: #aa273238, #88ff1844, #88273238, #88394249, #ff1844
+
+
+! "Y-offset relative to location" Set from: Default
+rofi.yoffset:                        -330

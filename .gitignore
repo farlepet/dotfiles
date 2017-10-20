@@ -12,6 +12,7 @@
 !.xinitrc
 !.xbindkeysrc.scm
 !.Xresources
+!.rofi-xr
 
 # Include .config folder
 !.config/

@@ -120,11 +120,15 @@ show_marks yes
 # setup gaps
 gaps inner 8
 gaps outer 2
-smart_gaps on
+#smart_gaps on
 
 # No gaps for browser
 workspace 2 gaps inner 0
 workspace 2 gaps outer 0
+
+# No gaps for mail
+workspace 3 gaps inner 0
+workspace 3 gaps outer 0
 
 #
 # Startup programs
