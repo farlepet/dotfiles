@@ -40,3 +40,6 @@
 
 !.config/polybar
 !.config/polybar/*
+
+!.config/nvim
+!.config/nvim/*

@@ -13,7 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 Plugin 'ryanoasis/vim-webdevicons'
-Plugin 'airblade/vim-gitgutter'
+
+if !has('nvim')
+    Plugin 'airblade/vim-gitgutter'
+else
+    Plugin 'zchee/gitgutter.nvim'
+endif
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-scripts/Conque-GDB'
 Plugin 'leafgarland/typescript-vim'
@@ -79,7 +84,10 @@ filetype on
 
 " Enable mouse
 set mouse=a
-set ttymouse=xterm
+
+if !has('nvim')
+    set ttymouse=xterm
+endif
 
 " Color background after 80 characters differently
 let &colorcolumn=80
