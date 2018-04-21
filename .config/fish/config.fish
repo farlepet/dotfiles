@@ -11,3 +11,7 @@ source $OMF_PATH/init.fish
 
 set -g theme_color_scheme dark
 # set theme_color_scheme base16
+
+
+# Prevent GPG from creating a popup:
+set -x PINENTRY_USER_DATA "USE_CURSES=1"
