@@ -1,47 +1,33 @@
-# exec alopex "~/.config/alopex/statusbar.sh"
+# Screensaver/lock
 /usr/bin/xscreensaver -no-splash &
 
+# SSH key manager
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-# exec awesome
-# exec alopex
-# exec subtle
-
-/usr/bin/start-pulseaudio-x11 &
-
+# Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-
-#sxhkd &
-
-
-#exec bspwm
-
-
-#feh --bg-scale --no-xinerama /home/farlepet/Documents/wallpaper.jpg &
-
-
+# Terminal server
 urxvtd -q -f -o
+
+# Keybindings
 xbindkeys &
-#synclient touchpadOff=1 &
+
+# Java fix
 wmname LG3D &
 
 
 # Notification daemon
-#dunst &
-/usr/lib/notification-daemon-1.0/notification-daemon &
+dunst &
+#/usr/lib/notification-daemon-1.0/notification-daemon &
 
-/bin/mpd &
-compton --backend glx --vsync opengl-swc -cC --no-fading-openclose -b &
+# Compositor
+xcompmgr
+#compton --backend glx --vsync opengl-swc -cC --no-fading-openclose -b &
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
-
-#exec ~/.config/bspwm/wm
-
+# Wallpaper
 nitrogen --restore &
 
-#exec awesome
-#exec alopex #~/.config/alopex/statusbar.sh
+# Window Manager
 exec i3 -V > ~/.i3log

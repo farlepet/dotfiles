@@ -74,6 +74,6 @@ URxvt.matcher.rend.0: Uline Bold fg5
 !*.color15: base07
 
 
-#include </home/farlepet/.termcolors/sourcerer>
+!#include </home/farlepet/.termcolors/sourcerer>
 #include </home/farlepet/.rofi-xr>
 
