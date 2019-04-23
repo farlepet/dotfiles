@@ -12,18 +12,21 @@ export SSH_AUTH_SOCK
 urxvtd -q -f -o
 
 # Keybindings
-xbindkeys &
+#xbindkeys &
 
 # Java fix
 wmname LG3D &
 
+
+# Prevent screensaver while Kodi is open:
+/bin/kodi-prevent-xscreensaver
 
 # Notification daemon
 dunst &
 #/usr/lib/notification-daemon-1.0/notification-daemon &
 
 # Compositor
-xcompmgr
+xcompmgr &
 #compton --backend glx --vsync opengl-swc -cC --no-fading-openclose -b &
 
 # Wallpaper
