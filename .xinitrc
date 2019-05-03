@@ -19,7 +19,7 @@ wmname LG3D &
 
 
 # Prevent screensaver while Kodi is open:
-/bin/kodi-prevent-xscreensaver
+/bin/kodi-prevent-xscreensaver &
 
 # Notification daemon
 dunst &
@@ -31,6 +31,9 @@ xcompmgr &
 
 # Wallpaper
 nitrogen --restore &
+
+# Disable screensaver while in fullscreen
+caffeine &
 
 # Window Manager
 exec i3 -V > ~/.i3log
