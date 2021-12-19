@@ -1,6 +1,3 @@
-# Screensaver/lock
-/usr/bin/xscreensaver -no-splash &
-
 # SSH key manager
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
@@ -11,23 +8,23 @@ export SSH_AUTH_SOCK
 # Terminal server
 urxvtd -q -f -o
 
-# Keybindings
-#xbindkeys &
+# Screen Layout
+/home/farlepet/.screenlayout/5700xt.sh
 
 # Java fix
 wmname LG3D &
 
-
-# Prevent screensaver while Kodi is open:
-/bin/kodi-prevent-xscreensaver &
+# Screensaver/lock
+xautolock -time 1 -locker /home/farlepet/bin/display_lockscreen -corners 000- &
 
 # Notification daemon
 dunst &
-#/usr/lib/notification-daemon-1.0/notification-daemon &
+
+# Polkit Agent:
+lxqt-policykit-agent &
 
 # Compositor
 xcompmgr &
-#compton --backend glx --vsync opengl-swc -cC --no-fading-openclose -b &
 
 # Wallpaper
 nitrogen --restore &
@@ -35,5 +32,9 @@ nitrogen --restore &
 # Disable screensaver while in fullscreen
 caffeine &
 
+# Input method switcher
+fcitx &
+
 # Window Manager
 exec i3 -V > ~/.i3log
+

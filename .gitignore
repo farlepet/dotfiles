@@ -13,6 +13,10 @@
 !.xbindkeysrc.scm
 !.Xresources
 !.rofi-xr
+!.termcolors
+!.vim
+!.vim/bundle/**
+!.vim/themes/**
 
 # Include .config folder
 !.config/

@@ -1,0 +1,12 @@
+[submodule ".config/polybar/polybar-scripts"]
+	path = .config/polybar/polybar-scripts
+	url = https://github.com/x70b1/polybar-scripts.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".vim/bundle/vim-webdevicons"]
+	path = .vim/bundle/vim-webdevicons
+	url = https://github.com/ryanoasis/vim-webdevicons.git

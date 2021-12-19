@@ -28,6 +28,8 @@ URxvt.matcher.button: 1
 
 URxvt.matcher.rend.0: Uline Bold fg5
 
+Xcursor.size: 24
+
 !URxvt.font: xft:FuraCode NF:size=10
 !URxvt.font: -*-SauceCodePro Nerd Font-r-*--12-*-*-*-*-*-*-*
 
