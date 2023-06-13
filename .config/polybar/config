@@ -87,7 +87,7 @@ font-4 = "Material Icons:pixelsize=10;1"
 
 modules-left = i3
 modules-center =
-modules-right = memory cpu system-cpu-freq system-cpu-temppercore amdgpu-temp date
+modules-right = memory cpu system-cpu-freq system-cpu-temppercore amdgpu-temp time-lt date
 # amdgpu-temp system-nvidia-smi
 
 wm-restack = i3
@@ -123,7 +123,7 @@ font-4 = "Material Icons:pixelsize=10;1"
 
 modules-left = i3
 modules-center =
-modules-right = volume memory cpu system-cpu-freq system-cpu-temppercore wlan1 wlan2 bond0 enp9s0 vpn date
+modules-right = volume memory cpu system-cpu-freq system-cpu-temppercore wlan1 wlan2 fibre ethernet vpn date
 
 wm-restack = i3
 
@@ -246,10 +246,8 @@ interval = 25
 
 mount-0 = /
 mount-1 = /home
-mount-2 = /mnt/exthdd
-mount-3 = /mnt/shared
-mount-4 = /mnt/music
-mount-5 = /mnt/dock
+mount-2 = /mnt/shared
+mount-3 = /mnt/music
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
 label-unmounted = %mountpoint% not mounted
@@ -395,60 +393,30 @@ label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
 
-[module/bond0]
+[module/fibre]
 type = internal/network
-interface = bond0
+interface = enp16s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "FIBRE "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip% %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
+label-connected = %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
-[module/enp16s0f0]
-type = internal/network
-interface = enp16s0f0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip% %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/enp16s0f1]
-type = internal/network
-interface = enp16s0f1
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip% %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/enp9s0]
+[module/ethernet]
 type = internal/network
 interface = enp9s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "ETH "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip% %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
+label-connected = %{F#5A7}↓%downspeed%%{F-} %{F#68B}↑%upspeed%%{F-}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
@@ -471,6 +439,16 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date% %time%
+
+[module/time-lt]
+type = custom/script
+interval = 30
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+exec = TZ=Europe/Vilnius date +"LT: %H:%M"
 
 [module/volume]
 type = internal/volume

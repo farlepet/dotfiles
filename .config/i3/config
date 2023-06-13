@@ -20,7 +20,8 @@ font "-misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso8859-1"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc -fn "-misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso8859-1" -e "fish"
+bindsym $mod+Return exec "urxvtc -fn 'xft:Terminus:size=8,xft:PowerlineSymbols,style=Medium,xft:Symbola:size=8,xft:Unifont' -e 'fish'"
+#bindsym $mod+Return exec urxvtc -fn "-misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso8859-1" -e "fish"
     # "xft:Terminus:size=9:antialias=false" -e fish
     # -fn "xft:FuraCode NF:size=10" -e fish
 
@@ -36,6 +37,7 @@ bindsym $mod+l exec i3lock -c 000000 -S 0 -k &
 # start dmenu (a program launcher)
 #bindsym $mod+p exec dmenu_run
 bindsym $mod+p exec rofi -show run
+bindsym $mod+Shift+p exec rofi -show drun
 
 # Mod1ernatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -49,6 +51,10 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Move workspace between monitors
+bindsym $mod+Shift+Mod1+Left move workspace to output left
+bindsym $mod+Shift+Mod1+Right move workspace to output right
+
 # Set split direction
 bindsym $mod+h split h
 bindsym $mod+v split v
@@ -61,8 +67,9 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# toggle tiling / floating; sticky windows
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -131,11 +138,13 @@ bindsym $mod+minus scratchpad show
 # Make sure pop-ups are floating
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [window_role="About"] floating enable 
-for_window [window_role="bubble"] floating enable 
-for_window [window_role="dialog"] floating enable 
-for_window [window_role="menu"] floating enable 
-for_window [window_role="Preferences"] floating enable 
+for_window [window_role="About"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="menu"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [title="Reminders"] floating enable
+for_window [class="evolution-alarm-notify"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -149,17 +158,17 @@ hide_edge_borders both
 show_marks yes
 
 # setup gaps
-gaps inner 8
-gaps outer 2
+gaps inner 2
+gaps outer 1
 #smart_gaps on
 
 # No gaps for browser
-workspace 2 gaps inner 0
-workspace 2 gaps outer 0
+#workspace 2 gaps inner 0
+#workspace 2 gaps outer 0
 
 # No gaps for mail
-workspace 3 gaps inner 0
-workspace 3 gaps outer 0
+#workspace 3 gaps inner 0
+#workspace 3 gaps outer 0
 
 bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+"
 bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-"

@@ -6,30 +6,7 @@ endif
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
-Plugin 'ryanoasis/vim-webdevicons'
-
-if !has('nvim')
-    Plugin 'airblade/vim-gitgutter'
-else
-    Plugin 'zchee/gitgutter.nvim'
-endif
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'leafgarland/typescript-vim'
-
-let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
-let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
-let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
-
-call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 set laststatus=2
 set t_Co=256
@@ -37,14 +14,37 @@ set encoding=utf8
 
 " autocmd vimenter * NERDTree
 map <C-f> :NERDTreeToggle<CR>
+map <C-g> :NERDTreeToggle %<CR>
+
+" Git blame on \s
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
-let g:ConqueGdb_GdbExe = "arm-none-eabi-gdb"
+
+" Enable Doxygen highlighting
+let g:load_doxygen_syntax=1
 
 let g:powerline_symbols = 'fancy'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ' :'
+let g:airline_symbols.maxlinenr = '☰ '
+let g:airline_symbols.dirty='⚡'
+
+let g:ctrlp_working_path_mode = 0
 
 " Show grey line numbers
 set number
@@ -57,10 +57,9 @@ set showmode
 " Disable annoying beeps
 set visualbell
 
-" Prevent backups from being created
-set noswapfile
-set nobackup
-set nowb
+" Place backup files in separate directory
+set directory=$HOME/.vim/swap//
+set backupdir=$HOME/.vim/backup//
 
 " Enable smart indentation
 set autoindent
@@ -90,7 +89,7 @@ if !has('nvim')
 endif
 
 " Color background after 80 characters differently
-let &colorcolumn=80
+set colorcolumn=80,120
 highlight ColorColumn ctermbg=232 guibg=#2c2d27
 
 set ttyfast
@@ -103,9 +102,9 @@ set ignorecase
 
 " Keybindings:
 " Tabs
-nmap <C-t> :tabnew<CR>
-nmap <C-l> :tabp<CR>
-nmap <C-n> :tabn<CR>
+map <C-t>     :tabnew<CR>
+map <Leader>, :tabp<CR>
+map <Leader>. :tabn<CR>
 
 " Buffers
 " nmap <C-b> :enew<CR>
@@ -121,5 +120,27 @@ let NERDTreeIgnore = ['\.o$']
 
 source ~/.vim/themes/sourcerer
 
-map <A-Right> gt
-map <A-Left> gT
+" Tags
+nmap <F12> g<C-]>
+nmap <F24> <C-w>g<C-]>
+nmap <F11> :po<CR>
+nmap <F23> :ta<CR>
+
+if executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" File types
+autocmd BufNewFile,BufRead *.json.example set filetype=json
+autocmd FileType makefile setlocal noexpandtab
+autocmd BufRead,BufNewFile *.tbpy set filetype=python
+
+" Highlight current line in active window
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au VimEnter,WinEnter,BufWinEnter * hi clear CursorLine
+  au WinLeave * setlocal nocursorline
+augroup END
+

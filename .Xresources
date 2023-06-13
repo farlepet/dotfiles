@@ -1,10 +1,8 @@
 ! Xresources file
 
 *.depth: 32
-*.background: rgba:0000/0000/0200/d000
 
 ! URxvt.foreground: Grey
-
 ! URxvt.background: Black
 
 URxvt.scrollBar: false
@@ -22,11 +20,14 @@ URxvt*scrollTtyKeypress: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 
-URxvt.perl-ext-common: default,matcher,fullscreen
+URxvt.perl-ext-common: default,matcher,fullscreen,font-size
+
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
-
 URxvt.matcher.rend.0: Uline Bold fg5
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
 
 Xcursor.size: 24
 
@@ -80,5 +81,5 @@ Xcursor.size: 24
 #include </home/farlepet/.rofi-xr>
 
 
-*.background: rgba:0000/0000/0200/d000
+*.background: rgba:0000/0000/0200/f800
 

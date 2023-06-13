@@ -1,10 +1,12 @@
 #!/bin/sh
 
-temp=$(cat /sys/class/drm/card0/device/hwmon/hwmon1/temp2_input | sed 's/...$//')
+HWMON=/sys/class/drm/card0/device/hwmon/hwmon0
 
-power=$(cat /sys/class/drm/card0/device/hwmon/hwmon1/power1_average | sed 's/......$//')
+temp=$(cat $HWMON/temp2_input | sed 's/...$//')
 
-freq=$(cat /sys/class/drm/card0/device/hwmon/hwmon1/freq1_input | sed 's/......$//')
+power=$(cat $HWMON/power1_average | sed 's/......$//')
+
+freq=$(cat $HWMON/freq1_input | sed 's/......$//')
 
 
 echo ${temp}°C ${power}W ${freq}MHz
