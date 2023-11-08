@@ -100,7 +100,7 @@ require("lazy").setup(
     {
         "airblade/vim-gitgutter",
         "ctrlpvim/ctrlp.vim",
-        "zivyangll-blame.vim",
+        "zivyangll/git-blame.vim",
         "preservim/nerdtree",
         "vim-airline/vim-airline",
         "vim-airline/vim-airline-themes",
