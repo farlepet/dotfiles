@@ -105,7 +105,8 @@ require("lazy").setup(
         "vim-airline/vim-airline",
         "vim-airline/vim-airline-themes",
         "bfrg/vim-cpp-modern",
-        "dag/vim-fish"
+        "dag/vim-fish",
+        "tikhomirov/vim-glsl"
     }
 )
 

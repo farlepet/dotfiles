@@ -1,0 +1,140 @@
+[{
+    "layer": "bottom",
+    "position": "top",
+    "output": [ "*" ],
+
+    "min-height": 0,
+    //"height": 16,
+
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "network", "network#speed", "temperature", "cpu", "memory", "clock#CA", "clock#MA", "clock#GB", "clock#LT", "clock#AU", "clock#UTC", "clock", "tray" ],
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true
+    },
+    "sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%Y-%m-%d %H:%M:%OS}",
+        "tooltip": false
+    },
+    "clock#GB": {
+        "interval": 1,
+        "format": "GB {:%H:%M}",
+        "tooltip": false,
+        "timezone": "UTC"
+    },
+    "clock#UTC": {
+        "interval": 1,
+        "format": "UTC {:%H:%M}",
+        "tooltip": false,
+        "timezone": "UTC"
+    },
+    "clock#CA": {
+        "interval": 1,
+        "format": "CA {:%H:%M}",
+        "tooltip": false,
+        "timezone": "America/Los_Angeles"
+    },
+    "clock#MA": {
+        "interval": 1,
+        "format": "MA {:%H:%M}",
+        "tooltip": false,
+        "timezone": "America/New_York"
+    },
+    "clock#LT": {
+        "interval": 1,
+        "format": "LT {:%H:%M}",
+        "tooltip": false,
+        "timezone": "Europe/Vilnius"
+    },
+    "clock#AU": {
+        "interval": 1,
+        "format": "AU {:%H:%M}",
+        "tooltip": false,
+        "timezone": "Australia/Brisbane"
+    },
+
+    "network": {
+        "format-wifi": "<span foreground='#929292'></span> {essid} <span foreground='#929292'>{signalStrength}%</span> {ifname} {ipaddr}",
+        "format-ethernet": "<span foreground='#929292'></span> {ifname} {ipaddr}",
+        "format-disconnected": "no net",
+        "tooltip": false
+    },
+    "network#speed": {
+        "format-wifi": "<span foreground='#929292'></span> {bandwidthDownOctets} <span foreground='#929292'></span> {bandwidthUpOctets}",
+        "format-ethernet": "<span foreground='#929292'></span> {bandwidthDownOctets} <span foreground='#929292'></span> {bandwidthUpOctets}",
+        "interval": 1
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "<span foreground='#929292'></span>",
+        "format-icons": {
+            "default": ["<span foreground='#929292'></span>"],
+            "headphones": ["<span foreground='#929292'></span>"]
+        },
+        "on-scroll-up": "pamixer -ui 1 && pamixer --get-volume > $SWAYSOCK.wob",
+        "on-scroll-down": "pamixer -ud 1 && pamixer --get-volume > $SWAYSOCK.wob",
+        "tooltip": false
+    },
+    "temperature": {
+        "format": "<span foreground='#929292'></span> {temperatureC}°C",
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
+        "interval": 2,
+        "critical-threshold": 60,
+	    "format-critical": "<span foreground='#ff5c57'></span> {temperatureC}°C"
+    },
+    "cpu": {
+        "interval": 3,
+        "format": "<span foreground='#929292'></span> {usage}%"
+    },
+    "memory": {
+        "interval": 3,
+        "format": "<span foreground='#929292'></span> {percentage}%"
+    },
+    "tray": {
+        "icon-size": 14
+    }
+}, {
+    "layer": "bottom",
+    "position": "bottom",
+    "output":   [ "DP-1", "DP-3" ],
+
+    "modules-left": [ "mpd" ],
+    "modules-center": [],
+    "modules-right": [ "temperature" ],
+
+    "mpd": {
+        "format": "{stateIcon} <span foreground='#7e8aa2'>{artist}</span> - <span foreground='#719611'>{album}</span> - <span foreground='#a1c56c'>{title}</span> ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format-disconnected": "MPD Disconnected",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color='#f53c3c'></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    }
+}]

@@ -1,0 +1,289 @@
+set $mod Mod4
+
+#Not enabling by default - causes mild brightness flickering when frame rate changes
+#output * adaptive_sync on
+
+output DP-2 resolution 1920x1080 position 0,200
+output DP-1 resolution 2560x1440 position 1920,0
+output DP-3 resolution 1280x1024 position 4480,0 transform 270
+
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+
+for_window [class="^.*"] border pixel 1
+
+font pango:Terminus 10px
+#font "-misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso8859-1"
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+set $term footclient
+
+# urxvt server
+#exec urxvtd
+#set $term urxvtc -fn 'xft:Terminus:size=8,xft:PowerlineSymbols,style=Medium,xft:Symbola:size=8,xft:Unifont'
+    # "xft:Terminus:size=9:antialias=false"
+    # "xft:FuraCode NF:size=10"
+    # "-misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso8859-1"
+
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+set $lock swaylock
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# start a terminal
+#bindsym $mod+Return exec "urxvtc -fn 'xft:Terminus:size=8,xft:PowerlineSymbols,style=Medium,xft:Symbola:size=8,xft:Unifont' -e 'fish'"
+bindsym $mod+Return exec $term -e "fish"
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Lock screen
+#bindsym $mod+l exec xscreensaver-command -lock 
+#bindsym $mod+l exec xautolock -locknow
+bindsym $mod+l exec $lock
+
+bindsym $mod+Shift+i seat shortcuts_inhibitor enable
+
+for_window [class="Nxplayer.bin"]         shortcuts_inhibitor enable
+for_window [app_id="org.remmina.Remmina"] shortcuts_inhibitor enable
+for_window [app_id="wlvncc"]              shortcuts_inhibitor enable
+
+# start dmenu (a program launcher)
+#bindsym $mod+p exec dmenu_run
+#bindsym $mod+p exec rofi -show run
+#bindsym $mod+Shift+p exec rofi -show drun
+bindsym $mod+p exec wofi --show run
+bindsym $mod+Shift+p exec wofi --show drun
+
+# Mod1ernatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Mod1ernatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Move workspace between monitors
+bindsym $mod+Shift+Mod1+Left move workspace to output left
+bindsym $mod+Shift+Mod1+Right move workspace to output right
+
+# Set split direction
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating; sticky windows
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+s sticky toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Mod1+1 workspace 11
+bindsym $mod+Mod1+2 workspace 12
+bindsym $mod+Mod1+3 workspace 13
+bindsym $mod+Mod1+4 workspace 14
+bindsym $mod+Mod1+5 workspace 15
+bindsym $mod+Mod1+6 workspace 16
+bindsym $mod+Mod1+7 workspace 17
+bindsym $mod+Mod1+8 workspace 18
+bindsym $mod+Mod1+9 workspace 19
+bindsym $mod+Mod1+0 workspace 20
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Mod1+Shift+1 move container to workspace 11
+bindsym $mod+Mod1+Shift+2 move container to workspace 12
+bindsym $mod+Mod1+Shift+3 move container to workspace 13
+bindsym $mod+Mod1+Shift+4 move container to workspace 14
+bindsym $mod+Mod1+Shift+5 move container to workspace 15
+bindsym $mod+Mod1+Shift+6 move container to workspace 16
+bindsym $mod+Mod1+Shift+7 move container to workspace 17
+bindsym $mod+Mod1+Shift+8 move container to workspace 18
+bindsym $mod+Mod1+Shift+9 move container to workspace 19
+bindsym $mod+Mod1+Shift+0 move container to workspace 20
+
+# Enable back_and_forth
+workspace_auto_back_and_forth yes
+bindsym $mod+z workspace back_and_forth
+
+# Enable scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
+# Make sure pop-ups are floating
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="menu"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [title="Reminders"] floating enable
+for_window [class="evolution-alarm-notify"] floating enable
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+hide_edge_borders both
+
+show_marks yes
+
+# setup gaps
+gaps inner 2
+gaps outer 1
+#smart_gaps on
+
+# No gaps for browser
+#workspace 2 gaps inner 0
+#workspace 2 gaps outer 0
+
+# No gaps for mail
+#workspace 3 gaps inner 0
+#workspace 3 gaps outer 0
+
+bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+"
+bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-"
+bindsym XF86AudioMute        exec "amixer sset Master toggle"
+
+bindsym XF86AudioPlay        exec "mpc toggle"
+bindsym XF86AudioPrev        exec "mpc prev"
+bindsym XF86AudioNext        exec "mpc next"
+
+#
+# Startup programs
+#
+
+#set $ncmpcpp_cmd $term -name ncmpcpp -e ncmpcpp
+set $ncmpcpp_cmd $term -app-id=ncmpcpp ncmpcpp
+
+bindsym $mod+m [app_id="ncmpcpp"] scratchpad show
+exec $ncmpcpp_cmd
+bindsym $mod+Shift+m exec $ncmpcpp_cmd
+for_window [app_id="ncmpcpp"] move scratchpad
+
+for_window [title="Microsoft Teams Notification"] floating enable
+
+#################
+# Setting Modes #
+#################
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+	    bindsym Shift+plus  gaps inner all plus 5
+		bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+		bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+		bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+# Start Polybar:
+#exec_always --no-startup-id $HOME/.config/polybar/start.sh
+exec_always --no-startup-id $HOME/.config/waybar/start.sh
+
+
+include /etc/sway/config.d/*
+

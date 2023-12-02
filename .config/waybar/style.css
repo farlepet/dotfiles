@@ -1,0 +1,152 @@
+/** {
+    font-family: "Terminus";
+    font-size:   10px;
+}*/
+
+/*window {
+    color:      rgba(217, 216, 216, 1);
+    background: rgba(35, 31, 32, 0.00);
+}*/
+
+
+/* colorscheme */
+@define-color background rgba(34, 34, 34, 0.9); 
+@define-color active rgba(68, 68, 68, 0.8);
+@define-color warning rgba(243, 249, 157, 1);
+@define-color alert rgba(255, 92, 87, 1);
+@define-color white rgba(239, 240, 235, 1);
+@define-color darkgrey rgba(73, 73, 73, 1);
+@define-color grey rgba(146, 146, 146, 1);
+
+@define-color red rgba(255, 92, 87, 1);
+@define-color yellow rgba(243, 249, 157, 1);
+@define-color blue rgba(10, 108, 245, 1);
+@define-color purple rgba(159, 120, 255, 1);
+@define-color green rgba(90, 247, 142, 1);
+@define-color cyan rgba(154, 237, 254, 1);
+
+* {
+    border:        none;
+    border-radius: 0;
+    font-family: "Terminus";
+    font-size:     12px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+}
+
+window {
+    color:      @white;
+    background: @background;
+}
+
+#workspaces {
+    padding-right: 20px;
+}
+
+#workspaces button {
+    background: transparent;
+    padding:    0 5px;
+    color:   @white;
+    min-width:  10px;
+    border-top: 1px solid transparent;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.visible {
+    color:      @white;
+}
+#workspaces button.focused {
+    border-top: 1px solid @active;
+    border-bottom: 2px solid @yellow;
+    background: @active;
+}
+#workspaces button.urgent {
+    color:      @alert;
+}
+
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #backlight, #custom-backup, #custom-pkg, #custom-storage, #custom-vpn, #custom-zfs-trim, #custom-zfs-scrub, #custom-systemd, #temperature, #clock {
+    margin:     0px 10px 0px 0px;
+}
+
+#tray, #custom-spotify, #custom-kubernetes {
+    margin:     0px 0px 0px 16px;
+}
+
+@define-color clock-normal rgba(10,  108, 245, 1);
+@define-color clock-tz     rgba(204, 153, 0,   1);
+@define-color clock-utc    rgba(198, 70,  0,   1);
+
+#clock {
+    border-bottom: 2px solid @clock-normal;
+}
+#clock.CA {
+    border-bottom: 2px solid @clock-tz;
+}
+#clock.MA {
+    border-bottom: 2px solid @clock-tz;
+}
+#clock.GB {
+    border-bottom: 2px solid @clock-tz;
+}
+#clock.LT {
+    border-bottom: 2px solid @clock-tz;
+}
+#clock.AU {
+    border-bottom: 2px solid @clock-tz;
+}
+#clock.UTC {
+    border-bottom: 2px solid @clock-utc;
+}
+
+#network {
+    border-bottom: 2px solid @purple;
+}
+
+#network.speed {
+    border-bottom: 0px;
+}
+
+#battery {
+    border-bottom: 2px solid @yellow;
+}
+
+#custom-pkg {
+    border-bottom: 2px solid @red;
+}
+
+#pulseaudio {
+    /*border-bottom: 2px solid @green;*/
+}
+
+#backlight {
+    /*border-bottom: 2px solid @alert;*/
+}
+
+#custom-vpn {
+    border-bottom: 2px solid @cyan;
+}
+
+#battery.warning {
+    color: @warning;
+    background: transparent;
+}
+
+#battery.critical {
+    color: @alert;
+    background: transparent;
+}
+
+#battery.charging {
+    color:      rgba(217, 216, 216, 1);
+}
+
+#custom-storage.warning {
+    color: @warning;
+    background: transparent;
+}
+
+#custom-storage.critical {
+    color: @alert;
+    background: transparent;
+}
