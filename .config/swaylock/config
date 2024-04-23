@@ -1,7 +1,7 @@
 ignore-empty-password
 font=Sans
 
-color=00000000
+color=000000FF
 
 indicator-radius=120
 indicator-thickness=60

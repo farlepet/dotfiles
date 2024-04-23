@@ -36,12 +36,13 @@
 }
 
 window {
+    padding-left: 10px;
     color:      @white;
     background: @background;
 }
 
 #workspaces {
-    padding-right: 20px;
+    padding-right: 5px;
 }
 
 #workspaces button {
@@ -57,6 +58,11 @@ window {
     color:      @white;
 }
 #workspaces button.focused {
+    border-top: 1px solid @active;
+    border-bottom: 2px solid @yellow;
+    background: @active;
+}
+#workspaces button.active {
     border-top: 1px solid @active;
     border-bottom: 2px solid @yellow;
     background: @active;

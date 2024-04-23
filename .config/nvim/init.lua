@@ -465,14 +465,14 @@ map("n", "<Leader>s", ":<C-u>call gitblame#echo()<CR>")
 
 -- Tags
 map("n", "<F12>", "g<C-]>")      -- Search for tag under cursor
-map("n", "<F14>", "<C-w>g<C-]>") -- 
+map("n", "<F24>", "<C-w>g<C-]>") --
 map("n", "<F11>", ":po<CR>")     -- Go back tag stack
 map("n", "<F23>", ":ta<CR>")     -- Go forward tag stack
 
 -- Tabs
 map("n", "<C-t>",     ":tabnew<CR>") -- New tab
-map("n", "<Leader>,", ":tabp<CR>")   -- Previous tab
-map("n", "<Leader>.", ":tabn<CR>")   -- Next tab
+map("n", "<Leader>[", ":tabp<CR>")   -- Previous tab
+map("n", "<Leader>]", ":tabn<CR>")   -- Next tab
 
 
 --

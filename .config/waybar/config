@@ -6,19 +6,30 @@
     "min-height": 0,
     //"height": 16,
 
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "network#speed", "temperature", "cpu", "memory", "clock#CA", "clock#MA", "clock#GB", "clock#LT", "clock#AU", "clock#UTC", "clock", "tray" ],
-    "sway/mode": {
+    "modules-right": ["battery", "pulseaudio", "network", "network#speed", "temperature", "cpu", "memory", "clock#CA", "clock#MA", "clock#GB", "clock#LT", "clock#AU", "clock#UTC", "clock", "tray" ],
+    "hyprland/submap": {
         "format": " {}"
     },
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "format": "{name}",
         "disable-scroll": true
     },
-    "sway/window": {
+    "hyprland/window": {
         "max-length": 80,
-        "tooltip": false
+        "tooltip": false,
+        "separate-outputs": true,
+    },
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15,
+        },
+        "format": "{capacity}% {icon} {time}",
+        "format-icons": [" ", " ", " ", " ", " "],
     },
 
     "clock": {
@@ -64,7 +75,7 @@
     },
 
     "network": {
-        "format-wifi": "<span foreground='#929292'></span> {essid} <span foreground='#929292'>{signalStrength}%</span> {ifname} {ipaddr}",
+        "format-wifi": "<span foreground='#929292'> </span> {essid} <span foreground='#929292'>{signalStrength}%</span> {ifname} {ipaddr}",
         "format-ethernet": "<span foreground='#929292'></span> {ifname} {ipaddr}",
         "format-disconnected": "no net",
         "tooltip": false
@@ -95,7 +106,7 @@
     },
     "cpu": {
         "interval": 3,
-        "format": "<span foreground='#929292'></span> {usage}%"
+        "format": "<span foreground='#929292'> </span> {usage}%"
     },
     "memory": {
         "interval": 3,
