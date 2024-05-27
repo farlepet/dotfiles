@@ -48,7 +48,7 @@ vim.o.tabstop     = tabsize
 vim.o.expandtab   = true
 
 -- Wrapping
-vim.o.nowrap = true
+vim.wo.wrap = true
 
 -- Ignore these when tab-completing
 vim.o.wildignore = "*.o,*~"
@@ -111,6 +111,7 @@ require("lazy").setup(
         "bfrg/vim-cpp-modern",
         "dag/vim-fish",
         "tikhomirov/vim-glsl",
+        "HiPhish/rainbow-delimiters.nvim",
 
         { 'folke/which-key.nvim', opts = {} },
 
@@ -177,6 +178,9 @@ require("lazy").setup(
             },
             build = ':TSUpdate',
         },
+        -- Color scheme
+        --{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+        "rebelot/kanagawa.nvim",
     }
 )
 
@@ -440,6 +444,8 @@ cmp.setup {
     },
 }
 
+require('rainbow-delimiters');
+
 
 --
 -- Keybindings
@@ -519,6 +525,18 @@ vim.api.nvim_create_autocmd({"FileType"},{
     end
 })
 
--- Theme
-vim.cmd("source ~/.vim/themes/sourcerer")
+-- Set color scheme
+-- require("catppuccin").setup({
+--    flavor = "mocha",
+--    transparent_background = true,
+--    dim_inactive = {
+--        enabled = false,
+--        percentage = 0.15,
+--    }
+--})
+--vim.cmd.colorscheme "catppuccin"
+require("kanagawa").setup({
+    transparent = true,
 
+})
+vim.cmd.colorscheme "kanagawa"
