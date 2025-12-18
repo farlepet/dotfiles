@@ -100,7 +100,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         -- Detect tabstop and shiftwidth automatically
-        'tpope/vim-sleuth',
+        --'tpope/vim-sleuth',
 
         "airblade/vim-gitgutter",
         --"ctrlpvim/ctrlp.vim",
@@ -181,6 +181,22 @@ require("lazy").setup(
         -- Color scheme
         --{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
         "rebelot/kanagawa.nvim",
+        -- ANSI escape sequences support
+        {
+            "m00qek/baleia.nvim",
+            version = "*",
+            config = function()
+                vim.g.baleia = require("baleia").setup({ })
+
+                -- Command to colorize the current buffer
+                vim.api.nvim_create_user_command("BaleiaColorize", function()
+                  vim.g.baleia.once(vim.api.nvim_get_current_buf())
+                end, { bang = true })
+
+                -- Command to show logs 
+                vim.api.nvim_create_user_command("BaleiaLogs", vim.g.baleia.logger.show, { bang = true })
+            end,
+        }
     }
 )
 
@@ -333,11 +349,15 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
+
+    nmap('<leader>ft', require('telescope.builtin').treesitter, '[F]ind [T]reesitter')
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require('mason').setup()
+require('mason').setup({
+    PATH = "append"
+})
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers
@@ -349,7 +369,7 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-    -- clangd = {},
+    clangd = {},
     -- gopls = {},
     -- pyright = {},
     rust_analyzer = {},
@@ -380,16 +400,16 @@ mason_lspconfig.setup {
     ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-   function(server_name)
-      require('lspconfig')[server_name].setup {
-         capabilities = capabilities,
-         on_attach = on_attach,
-         settings = servers[server_name],
-         filetypes = (servers[server_name] or {}).filetypes,
-      }
-   end,
-}
+-- mason_lspconfig.setup_handlers {
+--    function(server_name)
+--       require('lspconfig')[server_name].setup {
+--          capabilities = capabilities,
+--          on_attach = on_attach,
+--          settings = servers[server_name],
+--          filetypes = (servers[server_name] or {}).filetypes,
+--       }
+--    end,
+-- }
 
 
 -- [[ Configure nvim-cmp ]]
@@ -517,11 +537,19 @@ vim.api.nvim_create_autocmd({"BufNewFile","BufRead"},{
     end
 })
 
+-- Treat .tbpy files as .py
+vim.api.nvim_create_autocmd({"BufNewFile","BufRead"},{
+    pattern = "*.tbpy",
+    callback = function(ev)
+        vim.bo.filetype = "python"
+    end
+})
+
 -- Makefiles must use real tabs
 vim.api.nvim_create_autocmd({"FileType"},{
-    pattern = "makefile",
+    pattern = "make",
     callback = function(ev)
-        vim.wo.expandtab = false
+        vim.bo.expandtab = false
     end
 })
 
